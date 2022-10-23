@@ -5,15 +5,9 @@ public class Main {
         Stock 기아 = new Stock("기아");
         Stock 카카오 = new Stock("카카오");
 
-        System.out.println(삼성.getCode());
-        System.out.println(기아.getCode());
-        System.out.println(카카오.getCode());
+        System.out.println(삼성.getCode());     //  005930
+        System.out.println(기아.getCode());     // 000270
+        System.out.println(카카오.getCode());  // 035720
     }
 }
-```
-
-```
-    005930
-    000270
-    035720
 ```
