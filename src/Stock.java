@@ -25,21 +25,27 @@ public class Stock {
 
     public Stock(String stockName) {
         this.stockName = stockName;
+        findCode();
     }
 
-    public String getCode() {
+    private void findCode() {
         try {
             document = HttpConnection.connect(URL + this.stockName).get();
             outer = document.body().getElementsByClass(TAG).get(0);
             inner = outer.getElementsByClass("second");
-            code = inner.get(0).text();
+            code = Character.isDigit(code.toCharArray()[0])
+                    ? inner.get(0).text() : "000000";
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        for (char c : code.toCharArray())
-            if (!Character.isDigit(c)) return "000000";
-
+    public String getCode() {
         return code;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Stock) obj).getCode().equals(this.getCode());
     }
 }
